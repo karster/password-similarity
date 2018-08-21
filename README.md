@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)][license]
 
-> Email client blocks images by default. Mozify is way how to serve images to your customers.
+> Check if new password is similar as old one.
 
 ## Installation
 
