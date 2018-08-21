@@ -41,6 +41,38 @@ class PasswordSimilarityTest extends TestCase
     }
 
     /**
+     * @dataProvider dataProvider
+     *
+     * @param $old_password
+     * @param $new_password
+     * @param $expect
+     * @throws \Exception
+     */
+    public function testMd5($old_password, $new_password, $expect)
+    {
+        $password = new PasswordSimilarity(CryptAlgorithm::MD5);
+        $hash = md5($old_password);
+
+        $this->assertSame($expect, $password->isSimilar($new_password, $hash));
+    }
+
+    /**
+     * @dataProvider dataProvider
+     *
+     * @param $old_password
+     * @param $new_password
+     * @param $expect
+     * @throws \Exception
+     */
+    public function testSha256($old_password, $new_password, $expect)
+    {
+        $password = new PasswordSimilarity(CryptAlgorithm::SHA256);
+        $hash = hash('sha256', $old_password);
+
+        $this->assertSame($expect, $password->isSimilar($new_password, $hash));
+    }
+
+    /**
      * @return array
      */
     public function dataProvider(): array
